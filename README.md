@@ -1,6 +1,8 @@
 安装说明:
 =
+
 `composer require 'liryan/dbfiller' 'dev-master'`
+
 使用说明
 =
 在config/app.php中添加provider
