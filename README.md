@@ -18,8 +18,8 @@ providers=[
 
 运行命令，生成配置文件
 
-&gt;php composer dump
-&gt;php artisan vendor:publish
+&gt; php composer dump
+&gt; php artisan vendor:publish
 
 生成config/dbfiller.php
 根据数据库修改此文件
