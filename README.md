@@ -2,10 +2,6 @@
 =
 `composer require "liryan/dbfiller"`
 
-或者
-
-`git clone https://github.com/liryan/dbfiller`
-
 使用说明
 =
 在config/app.php中添加provider
