@@ -32,7 +32,7 @@ class Filler
      * @access public
      * @return void
      */
-    public function do()
+    public function fire()
     {
         Helper::info("Start..");
         foreach($this->config as $name=>$tab){

@@ -92,7 +92,7 @@ class Gen
      * @access public
      * @return void
      */
-    public function do(FormatParser $ctx)
+    public function make(FormatParser $ctx)
     {
         if(isset(static::$map_type_gen[$ctx->type])){
             return call_user_func(static::$map_type_gen[$ctx->type],$ctx);

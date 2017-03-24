@@ -21,6 +21,6 @@ class FillerCommand extends Command
 
     public function fire()
     {
-        DBFiller::do();
+        DBFiller::fire();
     }
 }

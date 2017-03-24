@@ -45,7 +45,7 @@ class GenManager
     {
         $ctx=new FormatParser();
         $ctx->initWithDatasource($from,$closure);
-        return $this->gens->do($ctx);
+        return $this->gens->make($ctx);
     }
 
     /**
@@ -66,7 +66,7 @@ class GenManager
                 function($matches) use($obj,$name){
                     $ctx=new FormatParser();
                     $ctx->initWithFormat($name,$matches);
-                    return $obj->gens->do($ctx);
+                    return $obj->gens->make($ctx);
                 },
                 $format
             );
@@ -88,7 +88,7 @@ class GenManager
         if(preg_match(FormatParser::typePattern(),$field->Type,$match)){
             $ctx=new FormatParser();
             $ctx->initWithDefine($field,$match);
-            return $this->gens->do($ctx);
+            return $this->gens->make($ctx);
         }
         else{
             throw new Exception("[BUG] can't parse the defination of table field");
