@@ -1,5 +1,5 @@
 安装说明:
-
+=
 composer require "liryan/dbfiller"
 
 或者
@@ -7,7 +7,7 @@ composer require "liryan/dbfiller"
 git clone https://github.com/liryan/dbfiller
 
 使用说明
-
+=
 在config/app.php中添加provider
 
 providers=[
@@ -28,6 +28,7 @@ php artisan vendor:publish
 php artisan mysql.filler 
 
 配置文件说明
+```php
 <?php
 return[
     '表1'=>
@@ -53,6 +54,7 @@ return[
     ],
     ...
 ];
+```
 
 格式说明 :
     字符串格式：[%|#][max-min][u/d/s/f/p]
