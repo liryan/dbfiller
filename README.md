@@ -3,6 +3,7 @@
 `composer require "liryan/dbfiller"`
 
 或者
+
 `git clone https://github.com/liryan/dbfiller`
 
 使用说明
@@ -18,10 +19,13 @@ providers=[
 运行命令，生成配置文件
 =
 `php composer dump`
+
 `php artisan vendor:publish`
 
 生成config/dbfiller.php
+
 根据数据库修改此文件
+
 然后运行
 
 `php artisan mysql.filler`
@@ -58,25 +62,26 @@ return[
 #格式说明
 
 字符串格式：[%|#][max-min][u/d/s/f/p]
+
 解释
-%   随机数据  \#  唯一数据
-max-min:
-数字:最大位数-最小位数
-字符:字符个数
-浮点:总位数，小数位数
+    %   随机数据  #  唯一数据
+    max-min:
+        数字:最大位数-最小位数
+        字符:字符个数
+        浮点:总位数，小数位数
 
-u/d/s/f/p:  
-u:无符号整数
-d:有符号整数
-s:字符串
-f:有符号浮点数
-p:无符号浮点
+    u/d/s/f/p:  
+        u:无符号整数
+        d:有符号整数
+        s:字符串
+        f:有符号浮点数
+        p:无符号浮点
 `
-
-例如邮件字段格式: <br>
-'format'=>'#16-4s@%20-1s.%3-2s'<br>
-                   唯一的用户名(4-16个字符) @ 域名1-20字符，后缀2-3字符<br>
-闭包格式：直接传递一个闭包函数，则数据调用你的闭包函数生成<br>
+    例如邮件字段格式: 
+        'format'=>'#16-4s@%20-1s.%3-2s'
+        唯一的用户名(4-16个字符) @ 域名1-20字符，后缀2-3字符
+        
+闭包格式：直接传递一个闭包函数，则数据调用你的闭包函数生成
 
 例如
 ```php
