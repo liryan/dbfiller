@@ -1,31 +1,30 @@
 安装说明:
 =
-&gt;composer require "liryan/dbfiller"
+`composer require "liryan/dbfiller"`
 
 或者
-
-&gt;git clone https://github.com/liryan/dbfiller
+`git clone https://github.com/liryan/dbfiller`
 
 使用说明
 =
 在config/app.php中添加provider
-
+```php
 providers=[
     ...
     Dbfiller\DBFillerProvider::class,
 ],
-
+```
 
 运行命令，生成配置文件
 
-&gt; php composer dump
-&gt; php artisan vendor:publish
+` php composer dump
+` php artisan vendor:publish
 
 生成config/dbfiller.php
 根据数据库修改此文件
 然后运行
 
-&gt;php artisan mysql.filler 
+`php artisan mysql.filler 
 
 配置文件说明
 ```php
@@ -58,16 +57,16 @@ return[
 
 格式说明 :<br>
 字符串格式：[%|#][max-min][u/d/s/f/p]<br>
-解释<br>
-%:          随机数据<br>
- max-min:    数字:最大位数-最小位数<br>
+        解释<br>
+        %:随机数据<br>
+        max-min:    数字:最大位数-最小位数<br>
         字符:字符个数<br>
-                浮点:总位数，小数位数<br>
-u/d/s/f/p:  u:无符号整数<br>
-                d:有符号整数<br><br>
-                s:字符串<br>
-                f:有符号浮点数<br>
-                p:无符号浮点<br>
+        浮点:总位数，小数位数<br>
+        u/d/s/f/p:  u:无符号整数<br>
+        d:有符号整数<br><br>
+        s:字符串<br>
+        f:有符号浮点数<br>
+        p:无符号浮点<br>
 
 例如邮件字段格式: <br>
 'format'=>'#16-4s@%20-1s.%3-2s'<br>
