@@ -1,10 +1,10 @@
 安装说明:
 =
-composer require "liryan/dbfiller"
+&gt;composer require "liryan/dbfiller"
 
 或者
 
-git clone https://github.com/liryan/dbfiller
+&gt;git clone https://github.com/liryan/dbfiller
 
 使用说明
 =
@@ -18,14 +18,14 @@ providers=[
 
 运行命令，生成配置文件
 
-php composer dump
-php artisan vendor:publish
+&gt;php composer dump
+&gt;php artisan vendor:publish
 
 生成config/dbfiller.php
 根据数据库修改此文件
 然后运行
 
-php artisan mysql.filler 
+&gt;php artisan mysql.filler 
 
 配置文件说明
 ```php
