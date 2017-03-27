@@ -19,6 +19,10 @@ class DBFillerProvider extends ServiceProvider
         $this->app->singleton('dbfiller', function () {
             return new Filler();
         });
+
+        if(method_exists($this->app,"configure")){
+            $this->app->configure('dbfiller');
+        }
     }
 
     public function boot()
