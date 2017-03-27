@@ -33,6 +33,10 @@ Lumen中，复制 vendor/liryan/dbfiler/src/config/dbfiller.php 到 项目 confi
 
 `php artisan mysql.filler`
 
+测试format
+
+`php artisan mysql.filler 'format' --count=1`
+
 配置文件说明
 ```php
 <?php
