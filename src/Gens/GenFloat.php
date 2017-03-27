@@ -25,7 +25,7 @@ class GenFloat extends Gen implements IGen
             $range=explode(",",$param);
             $pointbit=$range[1];
             $intbit=mt_rand(0,$range[0]);
-            $max=pow(10,$pointbit+$intbit)-1;
+            $max=pow(10,$intbit)-1;
         }
         elseif(intval($param)>0){
             $max=pow(10,intval($param))-1;
