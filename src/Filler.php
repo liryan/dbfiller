@@ -44,7 +44,6 @@ class Filler
     public function fire()
     {
         Helper::info("Start..");
-        print_r(Config::get('database'));
         foreach($this->config as $name=>$tab){
             $fields=DB::select("desc `$name`");
             $define=$tab['define'];
