@@ -37,7 +37,6 @@ class GenChar extends Gen implements IGen
         else{
             $width=mt_rand(1,intval($param)>1?intval($param):self::DEFAULT_CHAR_LEN);
         }
-
         $result="";
         if($uniq){
             $result=$this->incr($name);

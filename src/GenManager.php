@@ -61,7 +61,7 @@ class GenManager
         $format=$define['format'];
         $obj=$this;
         if(is_string($format)){
-            return preg_replace_callback(
+            $result=preg_replace_callback(
                 FormatParser::formatPattern(),
                 function($matches) use($obj,$name){
                     $ctx=new FormatParser();
@@ -70,6 +70,10 @@ class GenManager
                 },
                 $format
             );
+            if($result==$format){
+                throw new Exception("Error format:".$format);
+            }
+            return $result;
         }
         else{
             return call_user_func($format);

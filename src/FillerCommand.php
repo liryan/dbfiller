@@ -17,10 +17,18 @@ use Symfony\Component\Console\Input\InputArgument;
 class FillerCommand extends Command
 {
     protected $name = 'mysql.filler';
+    protected $signature = 'mysql.filler {format?} {--count=?}';
     protected $description = 'start fill database with given data';
 
     public function fire()
     {
-        DBFiller::fire();
+        $format=$this->argument('format');
+        if($format){
+            $count=$this->option('count');
+            DBFiller::test($format,$count);
+        }
+        else{
+            DBFiller::fire();
+        }
     }
 }

@@ -34,10 +34,12 @@ class GenInt extends Gen implements IGen
         $max=0;
         if(false!==strpos($param,",")){
             $range=explode(",",$param);
-            $min=$range[1];
-            $max=$range[0];
-            $min=pow(10,$min)-1;
-            $max=pow(10,$max)-1;
+            $min=min($range);
+            $max=max($range);
+            $bits=mt_rand($min,$max);
+
+            $min=pow(10,($bits-1));
+            $max=pow(10,$bits)-1;
         }
         else{
             $max=pow(2,8*intval($param))-1;

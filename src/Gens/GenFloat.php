@@ -23,8 +23,9 @@ class GenFloat extends Gen implements IGen
         $max=0;
         if(false!==strpos($param,",")){
             $range=explode(",",$param);
-            $intbit=$range[0];
             $pointbit=$range[1];
+            $intbit=mt_rand(0,$range[0]);
+            $max=pow(10,$pointbit+$intbit)-1;
         }
         elseif(intval($param)>0){
             $max=pow(10,intval($param))-1;
@@ -33,13 +34,13 @@ class GenFloat extends Gen implements IGen
             $max=pow(10,$intbit)-1;
         }
         if($unsigned){
-            return sprintf("%.0${pointbit}d",mt_rand(0,$max)/pow(10,$pointbit));
+            return sprintf("%.0${pointbit}f",mt_rand(0,$max)/pow(10,$pointbit));
         }
         else{
             if(mt_rand(0,9)%2==1){
-                return sprintf("%.0${pointbit}d",mt_rand(0,$max)/pow(10,$pointbit));
+                return sprintf("%.0${pointbit}f",mt_rand(0,$max)/pow(10,$pointbit));
             }
-            return 0-sprintf("%.0${pointbit}d",mt_rand(0,$max)/pow(10,$pointbit));
+            return 0-sprintf("%.0${pointbit}f",mt_rand(0,$max)/pow(10,$pointbit));
         }
     }
 

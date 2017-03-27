@@ -94,10 +94,10 @@ class FormatParser{
             $this->unique=false;
         }
         if($matches[3]){
-            $this->param=sprintf("%d,%d",$matches[2],$matches[3]);
+            $this->param=sprintf("%d,%d",$matches[2],abs($matches[3]));
         }
         else{
-            $this->param=sprintf("%d,%d",$matches[2],$matches[2]);
+            $this->param=sprintf("%d,%d",$matches[2],abs($matches[2]));
         }
         $this->name=$name;
         $this->flag=$matches[4];

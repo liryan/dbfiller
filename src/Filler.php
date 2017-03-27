@@ -26,6 +26,15 @@ class Filler
         $this->gen_manager=new GenManager();
     }
 
+    public function test($format,$count)
+    {
+        if($count<1){
+            $count=1;
+        }
+        for($i=0;$i<$count;$i++){
+            Helper::info("[$i]:".$this->gen_manager->dataWithFormat('TestField',Array('format'=>$format)));
+        }
+    }
     /**
      * doFill 
      * 入口函数
@@ -112,11 +121,12 @@ class Filler
      */
     public function fetchData($table,$field,$isrand,$start,$size)
     {
-        $conf=$this->config[$table];
         $key=self::DEFAULT_ID;
-
-        if(isset($conf['key'])){
-            $key=$conf['key'];
+        if(isset($this->config[$table])){
+            $conf=$this->config[$table];
+            if(isset($conf['key'])){
+                $key=$conf['key'];
+            }
         }
 
         if($isrand==false){
