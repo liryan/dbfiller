@@ -1,4 +1,13 @@
 <?php
+/**
+ * FormatParser{
+ * 配置文件，数据库字段定义的格式解析
+ * @package 
+ * @version 0.0.1
+ * @copyright 2014-2015
+ * @author Ryan
+ * @license MIT
+ */
 namespace Dbfiller\Gens;
 use Exception;
 
@@ -52,6 +61,13 @@ class FormatParser{
     public  $table;
     public  $datasource;
 
+    /**
+     * formatPattern 
+     * 解析配置文件中的Format定义
+     * @static
+     * @access public
+     * @return void
+     */
     public static function formatPattern()
     {
         return  "/(".FormatParser::FLAG_UNIQ."|".FormatParser::FLAG_NORM.
@@ -62,13 +78,27 @@ class FormatParser{
                 FormatParser::FLAG_INT.
                 FormatParser::FLAG_UFL."]{1})/i";
     }
-
+    /**
+     * typePattern 
+     * 解析数据库定义的column type定义
+     * @static
+     * @access public
+     * @return void
+     */
     public static function typePattern()
     {
         return '/([a-z]+)(\([^\)]+\))?( unsigned)?/i';
     }
 
-    public function initWithDefine($field,$matches)
+    /**
+     * initWithField 
+     * 使用字段的定义初始化解析器
+     * @param mixed $field 
+     * @param mixed $matches 
+     * @access public
+     * @return void
+     */
+    public function initWithField($field,$matches)
     {
         $this->type=$matches[1];
         $this->param='';
@@ -85,6 +115,14 @@ class FormatParser{
         $this->name=$field->Field;
     }
 
+    /**
+     * initWithFormat 
+     * 使用Format定义初始化
+     * @param mixed $name 
+     * @param mixed $matches 
+     * @access public
+     * @return void
+     */
     public function initWithFormat($name,$matches)
     {
         if($matches[1]==FormatParser::FLAG_UNIQ){
@@ -123,6 +161,14 @@ class FormatParser{
         } 
     }
 
+    /**
+     * initWithDatasource 
+     * 解析数据中的数据源
+     * @param mixed $from 
+     * @param mixed $clouser 
+     * @access public
+     * @return void
+     */
     public function initWithDatasource($from,$clouser)
     {
         switch($from[0]){

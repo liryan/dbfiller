@@ -91,7 +91,7 @@ class GenManager
     {
         if(preg_match(FormatParser::typePattern(),$field->Type,$match)){
             $ctx=new FormatParser();
-            $ctx->initWithDefine($field,$match);
+            $ctx->initWithField($field,$match);
             return $this->gens->make($ctx);
         }
         else{

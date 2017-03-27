@@ -21,7 +21,7 @@ class GenChar extends Gen implements IGen
     protected function genChar($name,$param,$uniq,$unsigned,$word=false)
     {
         static $gen_counter=1; 
-        if($gen_counter++%100==1){
+        if($gen_counter++%20==1){
             $this->chars=str_shuffle($this->chars);
         }
         $width=0;
@@ -54,67 +54,6 @@ class GenChar extends Gen implements IGen
 
         }
         return $result;
-    }
-
-    protected function genDatetime($name,$param,$uniq,$unsigned)
-    {
-        return date('Y-m-d H:i:s',time()-mt_rand(0,12*30*24*3600));
-    }
-
-    protected function genDate($name,$param,$uniq,$unsigned)
-    {
-        return date('Y-m-d',time()-mt_rand(0,12*30*24*3600));
-    }
-
-    protected function genFloat($name,$param,$uniq,$unsigned)
-    {
-        $intbit=8;
-        $floatbit=2;
-        if(false!==strpos($param,",")){
-            $range=explode(",",$param);
-            $intbit=$range[0];
-            $floatbit=$range[1];
-        }
-        if($unsigned){
-            return mt_rand(0,pow(2,$intbit)-1)/pow(10,$floatbit);
-        }
-        else{
-            if(mt_rand(1,10)%2==1){
-                return mt_rand(0,floor( (pow(2,$intbit)-1)/2 ))/pow(10,$floatbit);
-            }
-            return 0-mt_rand(0,floor( (pow(2,$intbit)-1)/2 ))/pow(10,$floatbit);
-        }
-    }
-
-    protected function genBinary($name,$param,$uniq,$unsigned)
-    {
-        return mt_rand(0,999999);
-    }
-
-    protected function genTime($name,$param,$uniq,$unsigned)
-    {
-        return time()-mt_rand(0,12*30*24*3600);
-    }
-
-    protected function genEnum($name,$param,$uniq,$unsigned)
-    {
-        $values=explode(",",str_replace("'","",$param));
-        return $values[mt_rand(0,count($values)-1)];
-    }
-
-    protected function genYear($name,$param,$uniq,$unsigned)
-    {
-        $year=Date('Y',time()-mt_rand(0,12*30*24*3600));
-        $param=intval($param);
-        if(intval($param) > strlen($year)){
-            $param=strlen($year);
-        }
-        return substr($year,strlen($year)-$param,$param);
-    }
-
-    protected function genBit($name,$param,$uniq,$unsigned)
-    {
-        return mt_rand(0,pow(2,intval($param)));
     }
 
 }

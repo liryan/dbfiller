@@ -29,6 +29,9 @@ class GenDataSource extends Gen implements IGen
             count($this->data_cache[$ctx->name]['data'])==0){
 
             $position=!isset($this->data_cache[$ctx->name])?0:$this->data_cache[$ctx->name]['position'];
+            if($isrand){
+                $position=0;
+            }
             $data=call_user_func($ctx->datasource,$ctx->table,$ctx->name,$isrand,$position,self::MAX_CACHE_COUNT);
             $this->data_cache[$ctx->name]=['position'=>$position+self::MAX_CACHE_COUNT,'data'=>$data];
         }
