@@ -1,6 +1,7 @@
 安装说明:
 =
-`composer require "liryan/dbfiller"`
+
+`composer require 'liryan/dbfiller' 'dev-master'`
 
 使用说明
 =
