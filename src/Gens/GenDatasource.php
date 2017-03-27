@@ -32,7 +32,7 @@ class GenDataSource extends Gen implements IGen
             if($isrand){
                 $position=0;
             }
-            $data=call_user_func($ctx->datasource,$ctx->table,$ctx->name,$isrand,$position,self::MAX_CACHE_COUNT);
+            $data=call_user_func($ctx->datasource,$ctx->table,$ctx->field,$isrand,$position,self::MAX_CACHE_COUNT);
             $this->data_cache[$ctx->name]=['position'=>$position+self::MAX_CACHE_COUNT,'data'=>$data];
         }
 

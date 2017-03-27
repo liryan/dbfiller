@@ -44,6 +44,7 @@ class Filler
     public function fire()
     {
         Helper::info("Start..");
+        print_r(Config::get('database'));
         foreach($this->config as $name=>$tab){
             $fields=DB::select("desc `$name`");
             $define=$tab['define'];
@@ -93,6 +94,7 @@ class Filler
                 }
                 $obj=$this;
                 return $this->gen_manager->dataWithDataSource(
+                    $field->Field,
                     $from,
                     function($table,$field,$isrand,$position,$size) use($obj){
                         return $obj->fetchData($table,$field,$isrand,$position,$size);

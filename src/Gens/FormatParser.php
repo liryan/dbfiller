@@ -59,6 +59,7 @@ class FormatParser{
     public  $type;
     private $flag;
     public  $table;
+    public  $field;
     public  $datasource;
 
     /**
@@ -169,7 +170,7 @@ class FormatParser{
      * @access public
      * @return void
      */
-    public function initWithDatasource($from,$clouser)
+    public function initWithDatasource($name,$from,$clouser)
     {
         switch($from[0]){
             case FormatParser::FLAG_NORM:
@@ -182,7 +183,8 @@ class FormatParser{
         $this->datasource=$clouser;
         $this->type='datasource';
         $this->table=$from[1];
-        $this->name=$from[2];
+        $this->field=$from[2];
+        $this->name=$name;
     }
 }
 

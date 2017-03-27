@@ -41,10 +41,10 @@ class GenManager
      * @access public
      * @return void
      */
-    public function dataWithDatasource($from,$closure)
+    public function dataWithDatasource($name,$from,$closure)
     {
         $ctx=new FormatParser();
-        $ctx->initWithDatasource($from,$closure);
+        $ctx->initWithDatasource($name,$from,$closure);
         return $this->gens->make($ctx);
     }
 
