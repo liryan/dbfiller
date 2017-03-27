@@ -13,6 +13,12 @@ providers=[
 ],
 ```
 
+在Lumen框架中，修改bootstrap/app.php
+```php
+...
+$app->register(Dbfiller\DBFillerProvider::class);
+```
+
 运行命令，生成配置文件
 =
 `php composer dump`
@@ -20,9 +26,9 @@ providers=[
 `php artisan vendor:publish`
 
 生成config/dbfiller.php
+Lumen中，复制 vendor/liryan/dbfiler/src/config/dbfiller.php 到 项目 config目录，不存在就新建
 
 根据数据库修改此文件
-
 然后运行
 
 `php artisan mysql.filler`
