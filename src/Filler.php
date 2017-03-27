@@ -18,7 +18,7 @@ class Filler
 {
     private $config;
     private $gen_manager;
-    public const DEFAULT_ID="id";
+    const DEFAULT_ID="id";
 
     public function __construct()
     {

@@ -5,8 +5,8 @@ use Exception;
 class GenChar extends Gen implements IGen
 {
     private $chars="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    public const MAX_WORDS=500;
-    public const DEFAULT_CHAR_LEN=32;
+    const MAX_WORDS=500;
+    const DEFAULT_CHAR_LEN=32;
 
     public function boot(){
         $obj=$this;

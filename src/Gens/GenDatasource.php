@@ -6,7 +6,7 @@ class GenDataSource extends Gen implements IGen
 {
     private $data_cache;
 
-    public const MAX_CACHE_COUNT=500;
+    const MAX_CACHE_COUNT=500;
 
     public function boot()
     {
