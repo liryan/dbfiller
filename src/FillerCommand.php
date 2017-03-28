@@ -22,9 +22,9 @@ class FillerCommand extends Command
 
     public function fire()
     {
-        $format=$this->argument('format');
+       $format=$this->argument('format');
         if($format){
-            $count=$this->option('count');
+            $count=$this->input->getParameterOption("--count");
             DBFiller::test($format,$count);
         }
         else{
