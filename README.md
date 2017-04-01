@@ -19,17 +19,16 @@ providers=[
 $app->register(Dbfiller\DBFillerProvider::class);
 ```
 
-laravel运行命令，生成配置文件
+生成配置文件
 =
-`php artisan vendor:publish`
+laravel运行命令，生成config/dbfiller.php
 
-生成config/dbfiller.php
+`php artisan vendor:publish`
 
 Lumen中生成配置文件复制到项目config目录，不存在就新建
 
-```
-cp vendor/liryan/dbfiler/src/config/dbfiller.php config/
-```
+`cp vendor/liryan/dbfiler/src/config/dbfiller.php config/`
+
 
 根据数据库修改此文件
 然后运行
@@ -41,6 +40,7 @@ cp vendor/liryan/dbfiler/src/config/dbfiller.php config/
 `php artisan mysql.filler 'format' --count=1`
 
 配置文件说明
+=
 ```php
 <?php
 return[
