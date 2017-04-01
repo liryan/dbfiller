@@ -92,8 +92,8 @@ return[
 
 例如
 ```php
-        'format'=>function(){
-                    return mt_rand(time()-30*24*3600,time())  //时间为最近一年某一刻
+        'format'=>function($row){  //$row :目前生成的数据集，值传递，不要修改，在字段需要与字段产生关系的时候调用
+                    return mt_rand(time()-30*24*3600,time())  //时间为最近一年某一刻
                   }
 ```
 
