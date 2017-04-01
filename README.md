@@ -19,14 +19,17 @@ providers=[
 $app->register(Dbfiller\DBFillerProvider::class);
 ```
 
-运行命令，生成配置文件
+laravel运行命令，生成配置文件
 =
-`php composer dump`
-
 `php artisan vendor:publish`
 
 生成config/dbfiller.php
-Lumen中，复制 vendor/liryan/dbfiler/src/config/dbfiller.php 到 项目 config目录，不存在就新建
+
+Lumen中生成配置文件复制到项目config目录，不存在就新建
+
+```
+cp vendor/liryan/dbfiler/src/config/dbfiller.php config/
+```
 
 根据数据库修改此文件
 然后运行
