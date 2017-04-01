@@ -47,17 +47,19 @@ class Filler
         foreach($this->config as $name=>$tab){
             $fields=DB::select("desc `$name`");
             $define=$tab['define'];
+            $define['parent']=$tab; //remember parent node
+
             Helper::info("Fill table:[$name]");
             $batchdata=[];
 
             for($i=0;$i<$tab['total'];$i++){
-                $row=[];
                 foreach($fields as $field){
                     if(0==strcasecmp($field->Extra,'auto_increment'))
                         continue;
-                    $row[$field->Field]=$this->genRowWith($field,$define);
+                    $define['row_index']=$i;
+                    $this->genRowWith($field,$define);
                 }
-                $batchdata[]=$row;
+                $batchdata[]=$this->gen_manager->rowFinished();
                 if($i%100==99){
                     DB::table($name)->insert($batchdata);
                     Helper::info("Inserted rows ".$i);
@@ -70,7 +72,7 @@ class Filler
                 Helper::info("Inserted rows ".sizeof($batchdata));
             }
 
-            $this->gen_manager->fillEnd();
+            $this->gen_manager->tableFinished();
             Helper::info("Fill table:[$name] completed");
         }
     }
@@ -92,7 +94,7 @@ class Filler
                     throw new Exception('Config error,'.$name."=>['define'=>".$field->Field."=>from");
                 }
                 $obj=$this;
-                return $this->gen_manager->dataWithDataSource(
+                $this->gen_manager->dataWithDataSource(
                     $field->Field,
                     $from,
                     function($table,$field,$isrand,$position,$size) use($obj){
@@ -101,11 +103,11 @@ class Filler
                 );
             }
             else{
-                return $this->gen_manager->dataWithFormat($field->Field,$format_def);
+                $this->gen_manager->dataWithFormat($field->Field,$format_def);
             }
         }
         else{
-            return $this->gen_manager->dataDefault($field);
+            $this->gen_manager->dataDefault($field);
         }
     }
 

@@ -24,7 +24,7 @@
  *                          组合使用
  *                          '例如邮件: #16-4s@%20-1s.%3>2s' 用户名(4-16个字符)唯一@域名1-20字符，后缀2-3字符
  *                      ]
- *                      'format'=>//clouser function(){  //传递一个闭包函数，自己生成数据
+ *                      'format'=>//clourse function($table_config,$row_index){  //传递一个闭包函数，自己生成数据,$row_index 该表的第几行数据
  *                          return mt_rand(time()-30*24*3600,time()) 
  *                      }
  *          ]

@@ -15,11 +15,13 @@ use Dbfiller\Gens\FormatParser;
 class GenManager
 {
     private $gens;
+    private $row_data;
 
     public function __construct()
     {
         $this->gens=new Gen();
         $this->gens->init();
+        $this->row_data=[];
     }
 
     /**
@@ -28,11 +30,18 @@ class GenManager
      * @access public
      * @return void
      */
-    public function fillEnd()
+    public function tableFinished()
     {
+        $this->row_data=[];
         $this->gens->reset();
     }
 
+    public function rowFinished()
+    {
+        $row=$this->row_data;
+        $this->row_data=[];
+        return $row;
+    }
     /**
      * dataWithDatasource 
      * 通过数据源生成数据，读取另外一个表的数据
@@ -45,7 +54,7 @@ class GenManager
     {
         $ctx=new FormatParser();
         $ctx->initWithDatasource($name,$from,$closure);
-        return $this->gens->make($ctx);
+        $this->row_data[$name]=$this->gens->make($ctx);
     }
 
     /**
@@ -73,10 +82,10 @@ class GenManager
             if($result==$format){
                 throw new Exception("Error format:".$format);
             }
-            return $result;
+            $this->row_data[$name]=$result;
         }
         else{
-            return call_user_func($format);
+            $this->row_data[$name]=call_user_func($format,$this->row_data);
         }
     }
     
@@ -92,7 +101,7 @@ class GenManager
         if(preg_match(FormatParser::typePattern(),$field->Type,$match)){
             $ctx=new FormatParser();
             $ctx->initWithField($field,$match);
-            return $this->gens->make($ctx);
+            $this->row_data[$field->Field]=$this->gens->make($ctx);
         }
         else{
             throw new Exception("[BUG] can't parse the defination of table field");
