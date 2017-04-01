@@ -120,7 +120,7 @@ return [
         'define'=>[
             'userid'=>['format'=>'',from=>'#.member.id'] //数据来自上面member表单字段,member一定要先生成
             'address'=>['format'=>'%32-16s'],
-            'postcode'=>['format'=>function(){
+            'postcode'=>['format'=>function($row){
                 $table=[100012,100013,100023,200010];    //随机返回一个数据
                 return $table[mt_rand(0,count($table)-1)];
             }],
